@@ -1,13 +1,14 @@
 object Form1: TForm1
-  Left = 595
+  Left = 607
   Height = 494
-  Top = 202
+  Top = 190
   Width = 762
   Caption = 'So Sánh'
   ClientHeight = 494
   ClientWidth = 762
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.4.4.0'
@@ -3027,6 +3028,17 @@ object Form1: TForm1
     Caption = '1 > 2'
     Font.Color = clWhite
     Font.Height = -47
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label2: TLabel
+    Left = 632
+    Height = 21
+    Top = 48
+    Width = 50
+    Caption = 'Score : '
+    Font.Color = clYellow
+    Font.Height = -16
     ParentColor = False
     ParentFont = False
   end

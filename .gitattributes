@@ -4,6 +4,9 @@
 # Custom for Visual Studio
 *.cs     diff=csharp
 
+# For Lazarus pascal
+*.pas    diff=pascal
+
 # Standard to msysgit
 *.doc	 diff=astextplain
 *.DOC	 diff=astextplain

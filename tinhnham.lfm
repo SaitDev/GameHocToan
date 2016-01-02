@@ -1,13 +1,14 @@
 object Form2: TForm2
-  Left = 502
+  Left = 506
   Height = 499
-  Top = 75
+  Top = 92
   Width = 763
   Caption = 'Tính nhẩm'
   ClientHeight = 499
   ClientWidth = 763
   OnClose = FormClose
   OnCreate = FormCreate
+  OnShow = FormShow
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.4.4.0'
@@ -3038,5 +3039,16 @@ object Form2: TForm2
     OnClick = Button1Click
     ParentFont = False
     TabOrder = 1
+  end
+  object Label2: TLabel
+    Left = 632
+    Height = 21
+    Top = 48
+    Width = 50
+    Caption = 'Score : '
+    Font.Color = clYellow
+    Font.Height = -16
+    ParentColor = False
+    ParentFont = False
   end
 end

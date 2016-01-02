@@ -50,6 +50,7 @@
         <Filename Value="mainwindow.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Main"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="MainWindow"/>
       </Unit2>
@@ -57,6 +58,7 @@
         <Filename Value="tinhnham.pas"/>
         <IsPartOfProject Value="True"/>
         <ComponentName Value="Form2"/>
+        <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="TinhNham"/>
       </Unit3>

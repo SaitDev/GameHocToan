@@ -26,6 +26,7 @@ type
 
 var
   Main: TMain;
+  Score: Integer;
 
 implementation
 
@@ -34,6 +35,7 @@ uses sosanh, tinhnham;
 {$R *.lfm}
 
 { TMain }
+
 
 procedure TMain.Button3Click(Sender: TObject);
 begin

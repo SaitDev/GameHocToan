@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  ExtCtrls;
+  ExtCtrls, MMSystem;
 
 type
 
@@ -17,11 +17,15 @@ type
     Button2: TButton;
     Image1: TImage;
     Label1: TLabel;
+    Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
-
+    procedure FormShow(Sender: TObject);
+    procedure RandomQuestion;
+    procedure CorrectAnswer;
+    procedure WrongAnswer;
   private
     { private declarations }
   public
@@ -34,26 +38,18 @@ var
 
 implementation
 
-uses mainwindow;
+uses MainWindow;
 
 {$R *.lfm}
 
 { TForm1 }
 
 
-procedure TForm1.Button1Click(Sender: TObject);
+procedure TForm1.RandomQuestion;
 begin
-   case pheptinh of
-   0: if x>y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
-   1: if x<y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
-   2: if x=y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
-   end;
-   x:=random(1+9);
-   y:=random(1+9);
-   pheptinh:=random(2);
+   x:=random(10);
+   y:=random(10);
+   pheptinh:=random(29) mod 3;
    case pheptinh of
    0: label1.Caption:=IntToStr(x) + ' > ' + IntToStr(y);
    1: label1.Caption:=IntToStr(x) + ' < ' + IntToStr(y);
@@ -61,24 +57,42 @@ begin
    end;
 end;
 
+procedure TForm1.CorrectAnswer;
+begin
+   Inc(Score,5);
+   Label2.Caption:='Score : ' + IntToStr(Score);
+   sndPlaySound('Sound\correct.wav',SND_ASYNC or SND_NODEFAULT);
+end;
+
+procedure TForm1.WrongAnswer;
+begin
+   sndPlaySound('Sound\wrong.wav',SND_ASYNC or SND_NODEFAULT);
+end;
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+   case pheptinh of
+   0: if x>y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   1: if x<y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   2: if x=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   end;
+   RandomQuestion;
+end;
+
 procedure TForm1.Button2Click(Sender: TObject);
 begin
    case pheptinh of
-   0: if x<=y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
-   1: if x>=y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
-   2: if x<>y then ShowMessage('Câu trả lời đúng')
-      else ShowMessage('Câu trả lời sai');
+   0: if x<=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   1: if x>=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   2: if x<>y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+      else WrongAnswer; //ShowMessage('Câu trả lời sai');
    end;
-   x:=random(10);
-   y:=random(10);
-   pheptinh:=random(2);
-   case pheptinh of
-   0: label1.Caption:=IntToStr(x) + ' > ' + IntToStr(y);
-   1: label1.Caption:=IntToStr(x) + ' < ' + IntToStr(y);
-   2: label1.Caption:=IntToStr(x) + ' = ' + IntToStr(y);
-   end;
+   RandomQuestion;
 end;
 
 procedure TForm1.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -89,14 +103,13 @@ end;
 procedure TForm1.FormCreate(Sender: TObject);
 begin
    Randomize;
-   x:=random(10);
-   y:=random(10);
-   pheptinh:=random(2);
-   case pheptinh of
-   0: label1.Caption:=IntToStr(x) + ' > ' + IntToStr(y);
-   1: label1.Caption:=IntToStr(x) + ' < ' + IntToStr(y);
-   2: label1.Caption:=IntToStr(x) + ' = ' + IntToStr(y);
-   end;
+end;
+
+procedure TForm1.FormShow(Sender: TObject);
+begin
+   RandomQuestion;
+   Score:= 0;
+   Label2.Caption:= 'Score : 0';
 end;
 
 

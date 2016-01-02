@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  StdCtrls;
+  StdCtrls, MMSystem;
 
 type
 
@@ -17,9 +17,14 @@ type
     Edit1: TEdit;
     Image1: TImage;
     Label1: TLabel;
+    Label2: TLabel;
     procedure Button1Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure RandomQuestion;
+    procedure CorrectAnswer;
+    procedure WrongAnswer;
   private
     { private declarations }
   public
@@ -35,23 +40,16 @@ implementation
 
 uses MainWindow;
 
+var dapan: LongInt;
+
 {$R *.lfm}
 
 { TForm2 }
 
 
 
-procedure TForm2.Button1Click(Sender: TObject);
-var dapan: LongInt;
+procedure TForm2.RandomQuestion;
 begin
-   case pheptinh of
-   0: dapan:= x + y;
-   1: dapan:= x - y;
-   2: dapan:= x * y;
-   3: dapan:= trunc(x/y);
-   end;
-   if StrToInt(Edit1.Text) = dapan then ShowMessage('Câu trả lời đúng')
-   else ShowMessage('Câu trả lời sai');
    x:= Random(10);
    y:= random(10);
    pheptinh:= random(3);
@@ -75,6 +73,33 @@ begin
              Label1.Caption:= IntToStr(x) + ' : ' + IntToStr(y) + ' =';
         end;
    end;
+   Edit1.Text:='';
+
+   case pheptinh of
+   0: dapan:= x + y;
+   1: dapan:= x - y;
+   2: dapan:= x * y;
+   3: dapan:= trunc(x/y);
+   end;
+end;
+
+procedure TForm2.CorrectAnswer;
+begin
+   Inc(Score,5);
+   Label2.Caption:= 'Score : ' + IntToStr(Score);
+   sndPlaySound('Sound\correct.wav',SND_ASYNC or SND_NODEFAULT);
+end;
+
+procedure TForm2.WrongAnswer;
+begin
+   sndPlaySound('Sound\wrong.wav',SND_ASYNC or SND_NODEFAULT);
+end;
+
+procedure TForm2.Button1Click(Sender: TObject);
+begin
+   if StrToInt(Edit1.Text) = dapan then CorrectAnswer //ShowMessage('Câu trả lời đúng')
+   else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   RandomQuestion;
 end;
 
 procedure TForm2.FormClose(Sender: TObject; var CloseAction: TCloseAction);
@@ -85,29 +110,13 @@ end;
 procedure TForm2.FormCreate(Sender: TObject);
 begin
    Randomize;
-   x:= Random(10);
-   y:= random(10);
-   pheptinh:= random(3);
-   case pheptinh of
-   0: Label1.Caption:= IntToStr(x) + ' + ' + IntToStr(y) + ' =';
-   1: begin
-           while (x<y) do
-           begin
-              x:= Random(10);
-              y:= random(10);
-           end;
-           Label1.Caption:= IntToStr(x) + ' - ' + IntToStr(y) + ' =';
-      end;
-   2: Label1.Caption:= IntToStr(x) + ' x ' + IntToStr(y) + ' =';
-   3: begin
-           while (x mod y <> 0) do
-           begin
-              x:= Random(10);
-              y:= random(10);
-           end;
-           Label1.Caption:= IntToStr(x) + ' : ' + IntToStr(y) + ' =';
-      end;
-   end;
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+   RandomQuestion;
+   Score:=0;
+   Label2.Caption:= 'Score : 0';
 end;
 
 
