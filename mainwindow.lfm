@@ -1,39 +1,115 @@
 object Main: TMain
-  Left = 982
-  Height = 352
-  Top = 118
-  Width = 337
+  Left = 994
+  Height = 350
+  Top = 204
+  Width = 340
   Caption = 'Welcome'
-  ClientHeight = 352
-  ClientWidth = 337
+  ClientHeight = 350
+  ClientWidth = 340
   Position = poDesktopCenter
   LCLVersion = '1.4.4.0'
   Visible = True
-  object Button1: TButton
-    Left = 112
-    Height = 37
-    Top = 56
-    Width = 111
-    Caption = 'So Sánh'
-    OnClick = Button1Click
+  object Panel1: TPanel
+    Left = 0
+    Height = 350
+    Top = 0
+    Width = 340
+    ClientHeight = 350
+    ClientWidth = 340
+    Color = clGreen
+    ParentColor = False
     TabOrder = 0
+    object Label1: TLabel
+      Tag = 1
+      Left = 100
+      Height = 32
+      Top = 56
+      Width = 140
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Lớp 1'
+      Color = clGreen
+      Font.Color = clWhite
+      Font.Height = -19
+      ParentColor = False
+      ParentFont = False
+      Transparent = False
+      OnClick = LabelClick
+      OnMouseEnter = LabelMouseEnter
+      OnMouseLeave = LabelMouseLeave
+    end
+    object Label2: TLabel
+      Tag = 2
+      Left = 100
+      Height = 32
+      Top = 157
+      Width = 140
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Lớp 2'
+      Font.Color = clWhite
+      Font.Height = -19
+      ParentColor = False
+      ParentFont = False
+      OnClick = LabelClick
+      OnMouseEnter = LabelMouseEnter
+      OnMouseLeave = LabelMouseLeave
+    end
+    object Label3: TLabel
+      Tag = 3
+      Left = 100
+      Height = 32
+      Top = 256
+      Width = 140
+      Alignment = taCenter
+      AutoSize = False
+      Caption = 'Lớp 3'
+      Font.Color = clWhite
+      Font.Height = -19
+      ParentColor = False
+      ParentFont = False
+      OnClick = LabelClick
+      OnMouseEnter = LabelMouseEnter
+      OnMouseLeave = LabelMouseLeave
+    end
   end
-  object Button2: TButton
-    Left = 112
-    Height = 37
-    Top = 152
-    Width = 111
-    Caption = 'Tính nhẩm'
-    OnClick = Button2Click
+  object Panel2: TPanel
+    Left = 350
+    Height = 350
+    Top = 0
+    Width = 340
+    BevelOuter = bvNone
+    ClientHeight = 350
+    ClientWidth = 340
+    Color = 818125
+    ParentColor = False
     TabOrder = 1
-  end
-  object Button3: TButton
-    Left = 112
-    Height = 37
-    Top = 248
-    Width = 111
-    Caption = 'Thoát'
-    OnClick = Button3Click
-    TabOrder = 2
+    object Button1: TButton
+      Left = 48
+      Height = 37
+      Top = 56
+      Width = 111
+      Caption = 'So Sánh'
+      OnClick = Button1Click
+      TabOrder = 0
+    end
+    object Button3: TButton
+      Left = 48
+      Height = 37
+      Top = 248
+      Width = 111
+      Caption = 'Thoát'
+      OnClick = Button3Click
+      TabOrder = 1
+    end
+    object Button2: TButton
+      Left = 48
+      Height = 37
+      Top = 152
+      Width = 111
+      Caption = 'Tính nhẩm'
+      OnClick = Button2Click
+      TabOrder = 2
+    end
   end
 end

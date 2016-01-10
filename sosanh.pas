@@ -47,9 +47,9 @@ uses MainWindow;
 
 procedure TForm1.RandomQuestion;
 begin
-   x:=random(10);
-   y:=random(10);
-   pheptinh:=random(29) mod 3;
+   x:=random(10*grade);
+   y:=random(10*grade);
+   pheptinh:=random(30) mod 3;
    case pheptinh of
    0: label1.Caption:=IntToStr(x) + ' > ' + IntToStr(y);
    1: label1.Caption:=IntToStr(x) + ' < ' + IntToStr(y);
@@ -72,12 +72,12 @@ end;
 procedure TForm1.Button1Click(Sender: TObject);
 begin
    case pheptinh of
-   0: if x>y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
-   1: if x<y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
-   2: if x=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   0: if x>y then CorrectAnswer
+      else WrongAnswer;
+   1: if x<y then CorrectAnswer
+      else WrongAnswer;
+   2: if x=y then CorrectAnswer
+      else WrongAnswer;
    end;
    RandomQuestion;
 end;
@@ -85,12 +85,12 @@ end;
 procedure TForm1.Button2Click(Sender: TObject);
 begin
    case pheptinh of
-   0: if x<=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
-   1: if x>=y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
-   2: if x<>y then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-      else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   0: if x<=y then CorrectAnswer
+      else WrongAnswer;
+   1: if x>=y then CorrectAnswer
+      else WrongAnswer;
+   2: if x<>y then CorrectAnswer
+      else WrongAnswer;
    end;
    RandomQuestion;
 end;
@@ -110,6 +110,7 @@ begin
    RandomQuestion;
    Score:= 0;
    Label2.Caption:= 'Score : 0';
+   //ShowMessage('You choose Lớp ' + IntToStr(grade));
 end;
 
 

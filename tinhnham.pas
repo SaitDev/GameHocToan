@@ -50,16 +50,16 @@ var dapan: LongInt;
 
 procedure TForm2.RandomQuestion;
 begin
-   x:= Random(10);
-   y:= random(10);
-   pheptinh:= random(3);
+   x:= Random(10*grade);
+   y:= random(10*grade);
+   pheptinh:= random(40) mod 4;
    case pheptinh of
    0: Label1.Caption:= IntToStr(x) + ' + ' + IntToStr(y) + ' =';
    1: begin
              while (x<y) do
              begin
-                x:= Random(10);
-                y:= random(10);
+                x:= Random(10*grade);
+                y:= random(10*grade);
              end;
              Label1.Caption:= IntToStr(x) + ' - ' + IntToStr(y) + ' =';
         end;
@@ -67,8 +67,8 @@ begin
      3: begin
              while (x mod y <> 0) do
              begin
-                x:= Random(10);
-                y:= random(10);
+                x:= Random(10*grade);
+                y:= Random(10*grade);
              end;
              Label1.Caption:= IntToStr(x) + ' : ' + IntToStr(y) + ' =';
         end;
@@ -97,8 +97,8 @@ end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-   if StrToInt(Edit1.Text) = dapan then CorrectAnswer //ShowMessage('Câu trả lời đúng')
-   else WrongAnswer; //ShowMessage('Câu trả lời sai');
+   if StrToInt(Edit1.Text) = dapan then CorrectAnswer
+   else WrongAnswer;
    RandomQuestion;
 end;
 
@@ -117,6 +117,7 @@ begin
    RandomQuestion;
    Score:=0;
    Label2.Caption:= 'Score : 0';
+   //ShowMessage('You choose Lớp ' + IntToStr(grade));
 end;
 
 
