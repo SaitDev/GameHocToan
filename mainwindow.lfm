@@ -1,7 +1,7 @@
 object Main: TMain
-  Left = 994
+  Left = 1005
   Height = 350
-  Top = 204
+  Top = 170
   Width = 340
   Caption = 'Welcome'
   ClientHeight = 350
@@ -22,18 +22,18 @@ object Main: TMain
     object Label1: TLabel
       Tag = 1
       Left = 100
-      Height = 32
+      Height = 40
       Top = 56
-      Width = 140
+      Width = 142
+      Align = alCustom
       Alignment = taCenter
       AutoSize = False
       Caption = 'Lớp 1'
-      Color = clGreen
       Font.Color = clWhite
       Font.Height = -19
+      Layout = tlCenter
       ParentColor = False
       ParentFont = False
-      Transparent = False
       OnClick = LabelClick
       OnMouseEnter = LabelMouseEnter
       OnMouseLeave = LabelMouseLeave
@@ -41,7 +41,7 @@ object Main: TMain
     object Label2: TLabel
       Tag = 2
       Left = 100
-      Height = 32
+      Height = 40
       Top = 157
       Width = 140
       Alignment = taCenter
@@ -49,6 +49,7 @@ object Main: TMain
       Caption = 'Lớp 2'
       Font.Color = clWhite
       Font.Height = -19
+      Layout = tlCenter
       ParentColor = False
       ParentFont = False
       OnClick = LabelClick
@@ -58,7 +59,7 @@ object Main: TMain
     object Label3: TLabel
       Tag = 3
       Left = 100
-      Height = 32
+      Height = 40
       Top = 256
       Width = 140
       Alignment = taCenter
@@ -66,6 +67,7 @@ object Main: TMain
       Caption = 'Lớp 3'
       Font.Color = clWhite
       Font.Height = -19
+      Layout = tlCenter
       ParentColor = False
       ParentFont = False
       OnClick = LabelClick
@@ -74,14 +76,14 @@ object Main: TMain
     end
   end
   object Panel2: TPanel
-    Left = 350
+    Left = 340
     Height = 350
     Top = 0
     Width = 340
     BevelOuter = bvNone
     ClientHeight = 350
     ClientWidth = 340
-    Color = 818125
+    Color = 293616
     ParentColor = False
     TabOrder = 1
     object Button1: TButton
@@ -96,7 +98,7 @@ object Main: TMain
     object Button3: TButton
       Left = 48
       Height = 37
-      Top = 248
+      Top = 256
       Width = 111
       Caption = 'Thoát'
       OnClick = Button3Click
@@ -105,11 +107,19 @@ object Main: TMain
     object Button2: TButton
       Left = 48
       Height = 37
-      Top = 152
+      Top = 157
       Width = 111
       Caption = 'Tính nhẩm'
       OnClick = Button2Click
       TabOrder = 2
     end
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 1
+    OnTimer = Timer1Timer
+    OnStopTimer = Timer1StopTimer
+    left = 24
+    top = 312
   end
 end

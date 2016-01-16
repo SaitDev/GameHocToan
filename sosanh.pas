@@ -47,8 +47,8 @@ uses MainWindow;
 
 procedure TForm1.RandomQuestion;
 begin
-   x:=random(10*grade);
-   y:=random(10*grade);
+   x:=random(range);
+   y:=random(range);
    pheptinh:=random(30) mod 3;
    case pheptinh of
    0: label1.Caption:=IntToStr(x) + ' > ' + IntToStr(y);
@@ -107,6 +107,7 @@ end;
 
 procedure TForm1.FormShow(Sender: TObject);
 begin
+   range := 10 * grade;
    RandomQuestion;
    Score:= 0;
    Label2.Caption:= 'Score : 0';

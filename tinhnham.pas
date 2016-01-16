@@ -50,25 +50,32 @@ var dapan: LongInt;
 
 procedure TForm2.RandomQuestion;
 begin
-   x:= Random(10*grade);
-   y:= random(10*grade);
+   x:= Random(range);
+   y:= random(range);
    pheptinh:= random(40) mod 4;
    case pheptinh of
    0: Label1.Caption:= IntToStr(x) + ' + ' + IntToStr(y) + ' =';
    1: begin
              while (x<y) do
              begin
-                x:= Random(10*grade);
-                y:= random(10*grade);
+                x:= Random(range);
+                y:= random(range);
              end;
              Label1.Caption:= IntToStr(x) + ' - ' + IntToStr(y) + ' =';
+      end;
+   2: begin
+             if x>20 then y:=random(10);
+             if y>20 then x:=random(10);
+             Label1.Caption:= IntToStr(x) + ' x ' + IntToStr(y) + ' =';
         end;
-     2: Label1.Caption:= IntToStr(x) + ' x ' + IntToStr(y) + ' =';
-     3: begin
+   3: begin
+             if x>100 then y:=random(10);
+             if y>100 then x:=random(10);
              while (x mod y <> 0) do
              begin
-                x:= Random(10*grade);
-                y:= Random(10*grade);
+                x:= Random(range);
+                y:= 1 + Random(range - 1);
+                if x>100 then y:=random(10);
              end;
              Label1.Caption:= IntToStr(x) + ' : ' + IntToStr(y) + ' =';
         end;
@@ -114,6 +121,7 @@ end;
 
 procedure TForm2.FormShow(Sender: TObject);
 begin
+   range := 10 * grade;
    RandomQuestion;
    Score:=0;
    Label2.Caption:= 'Score : 0';
