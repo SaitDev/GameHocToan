@@ -9,3 +9,7 @@ https://www.youtube.com/playlist?list=PLvpvCI30vNmcNoQnjcddm5k_QjpC-Ymjv
 
 
 GameHocToan is a game for primary school students learning math.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/SaitDev/gamehoctoan/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
